@@ -1,35 +1,48 @@
 import java.util.Scanner;
 
-public class MosaicoDoCastelo {
+public class MosaicoDoCastelo{
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Digite um número inteiro: ");
-        int n = sc.nextInt();
+        System.out.print("Digite um numero inteiro: ");
+        int numeroInteiro = scanner.nextInt();
 
-        System.out.println("--- DIMENSAO " + n + " x " + n + " ---");
+        if (numeroInteiro> 1){
+            // Cabeçalho
 
-        for (int i = 0; i < n; i++) {
+            System.out.printf("--- DIMENSAO %d x %d ---\n", numeroInteiro, numeroInteiro);
 
-            for (int j = 0; j < n; j++) {
+            System.out.print("+");
+            for (int i = 3; i <= numeroInteiro; i++) {
+                System.out.print("#");
+            }
+            System.out.println("+");
 
-                // Cantos
-                if ((i == 0 || i == n - 1) && (j == 0 || j == n - 1)) {
-                    System.out.print("+");
+            // Corpo
 
-                    // Bordas
-                } else if (i == 0 || i == n - 1 || j == 0 || j == n - 1) {
+            if (numeroInteiro > 2) {
+                for (int i = 3; i <= numeroInteiro; i++) {
                     System.out.print("#");
-
-                    // Interior
-                } else {
-                    System.out.print(".");
+                    System.out.print(".".repeat(numeroInteiro - 2));
+                    System.out.println("#");
                 }
             }
 
-            System.out.println();
-        }
+            // Base
 
-        sc.close();
+            System.out.print("+");
+            for (int i = 3; i <= numeroInteiro; i++) {
+                System.out.print("#");
+            }
+            System.out.println("+");
+        }
+        else if (numeroInteiro == 1){
+            System.out.printf("--- DIMENSAO %d x %d ---\n", numeroInteiro, numeroInteiro);
+            System.out.print("+");
+        }
+        else{
+            System.out.print("Digite um numero > 0");
+        }
+        scanner.close();
     }
 }
